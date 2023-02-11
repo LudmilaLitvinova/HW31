@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title th:text="#{app.all.products}">Thymeleaf Demo</title>
+</head>
+
+<body>
+
+<div th:insert="fragments/header :: header"></div>
+
+<h1 th:text="${title}">Hello</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Cost</th>
+    </tr>
+    <tr th:each="prod, props: ${listProducts}">
+        <td th:text="${prod.id}"></td>
+        <td th:text="${prod.name}"></td>
+        <td th:text="${prod.cost}"></td>
+        <td>
+            <a th:href="@{/products/{id}(id=${prod.id})}"
+               th:text="#{app.all.products.details_btn}">
+            </a>
+        </td>
+
+        <td>
+            <a th:href="@{/products/{id}/delete (id=${prod.id})}"
+               th:text="#{app.products.delete_btn}">
+            </a>
+        </td>
+    </tr>
+</table>
+
+<a th:href="@{/products/add}"
+   th:text="#{app.product.add_btn}">
+</a>
+
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+
+</html>

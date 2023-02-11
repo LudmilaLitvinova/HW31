@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title th:text="#{app.test.msg}">Thymeleaf Demo</title>
+</head>
+
+<body th:inline="text">
+<div th:insert="fragments/header :: header"></div>
+
+<a th:href="@{/products}" th:text="#{app.test.main_page_btn}"></a>
+<h1>Hello [[${message}]]</h1>
+<div th:object="${product}">
+    <h2 th:text="*{id}"></h2>
+    <h2 th:text="*{name}"></h2>
+    <h2 th:text="*{cost}"></h2>
+</div>
+
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+
+</html>
